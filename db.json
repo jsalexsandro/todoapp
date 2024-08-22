@@ -1,0 +1,7 @@
+{
+  "post":[
+    { "id":1, "name":"Limpar a casa", "closed":false },
+    { "id":1, "name":"Ir á academia", "closed":false },
+    { "id":1, "name":"Estudar 2 horas", "closed":false }
+  ]
+}
