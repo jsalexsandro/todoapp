@@ -1,18 +1,38 @@
+import { resolve } from "path"
+import { Checkbox } from "../ui/checkbox"
+
 export async function View(){
-  const request = await fetch("http://localhost:3003/post", { method:"get" })
+
+  await new Promise(resolve => setTimeout(resolve, 3000))
+
+  const request = await fetch("http://localhost:3003/post", 
+    {
+      method:"get",
+      next: {
+        tags: ["get-taks"]
+      }
+    }
+  )
   const posts  = await request.json()
 
   function Post({ name, id, open }: { name:string, id:string, open:string }){
     return (
-      <div>
-        <p></p>
+      <div className="flex justify-between">
+        <p>{ name }</p>
+        <Checkbox className="p-3" value={ open } />
       </div>
     )
   }
   
   return (
-    <div>
-      { posts.map((e: any) => <p>{e.name}</p>) }
+    <div className="max-sm:h-full max-sm:overflow-auto">
+      <ul className="flex flex-col gap-2">
+        { posts.map((e: any) => (
+          <li>
+            <Post key={ e.id } name={ e.name } id={ e.id } open={ e.open } />
+          </li>
+        )) }
+      </ul>
     </div>
   )
 }
