@@ -28,7 +28,7 @@ export function Add(){
   return (
     <form  action={ handleAdd } className="flex max-sm:fixed max-sm:left-0 max-sm:bottom-0 max-sm:bg-secondary max-sm:p-2 max-sm:w-full gap-2">
       <Input name="task" />
-      <NButton />
+  <NButton />
     </form>
   )
 }
